@@ -1,0 +1,246 @@
+<div class="container">
+    <form >
+      
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mt-1000">
+
+                            <div class="col-md-12 mt-1000">
+                                
+                                <h1> <b>Add Lecthures</b></h1>
+                            </div>
+                        </div>
+                        <!-- name -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Lecturer Name</label>
+                                    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Lecturer Id</label>
+                                    <input type="text" class="form-control"  formControlName="lastName"placeholder="Lecturer Id" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" formControlName=" email" placeholder="Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Telephone -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Telephone No</label>
+                                    <input type="number" class="form-control" formControlName="contactNo" placeholder="Number" required>
+                                </div>
+                            </div>
+                            <!-- Id number -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Id Number</label>
+                                    <input type="text" class="form-control" formControlName="id" placeholder=" Id Number" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Gender -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" id="male"
+                                                    value="male" formControlName="gender" checked="checked">Male
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gender" id="male"
+                                                    value="male" formControlName="gender">Female
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Teaching corses</label>
+                                    <select class="form-contol" required formControlName=" course">
+                                        <option value="">Select Course</option>
+                                        <option value=""> ICT</option>
+                                        <option value=""> HR</option>
+                                        <option value=""> CIVIL ENGINEARING</option>
+                                        <option value=""> ENGLISH</option>
+                                        <option value="">GRAPHIC DESIGN</option>
+                                        <option value="">CISCO NETWORKING</option>
+                                        <option value="">ENGINEARING</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Adress -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" formControlName="address" placeholder="No" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>lane</label>
+                                    <input type="text" class="form-control" formControlName="address" placeholder="Lane" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>town</label>
+                                    <input type="text" class="form-control" formControlnName="address" placeholder="town">
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" formControlName="address" placeholder="city">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="">Education </label>
+                                <div class="row">
+            
+                                    <div class="col-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="deg" id="deg" formControlName=" education">
+                                            <label class="form-check-label" for="dev">
+                                         Degree
+                                        </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="HD" id="HD" formControlName=" education">
+                                            <label class="form-check-label" for="des">
+                                         Higher Diploma
+                                        </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="DIP" id="DIP" formControlName=" education">
+                                            <label class="form-check-label" for="buss">
+                                         Diploma
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="AL" id="AL" formControlName=" education">
+                                            <label class="form-check-label" for="buss">
+                                         A/L
+                                        </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                   </div>
+
+
+                    
+            <div class="container my-4 shadow p-4">
+                <button type="submit" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser"></i> Clear</button>
+               
+            </div>
+            
+            <div class="container my-4 shadow p-4">
+               
+                <button type="submit" class="btn btn-success"   (click)="Onsubmit"> <i  class="fas fa-spinner fa-spin"> </i> Sign In</button>
+            </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-15 mt-4">
+
+            <div class="card mt-3">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-hover mt-3">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Telephone No</th>
+                                    <th>Id Number</th>
+                                    <th>Gender</th>
+                                    <th>Course</th>
+                                    <th>Address no</th>
+                                    <!-- <th>Lane</th>
+                                    <th>Town</th>
+                                    <th>City</th> -->
+                                    <th>Education</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of lecList">
+                                    <td>{{item.firstName}}</td>
+                                    <td>{{item.lastName}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.telephoneNo}}</td>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.gender}}</td>
+                                    <td>{{item.course}}</td>
+                                    <td>{{item.no}},{{item.lane}},{{item.town}},{{item.city}}</td>
+                                    <!-- <td>{{item.lane}}</td>
+                                    <td>{{item.town}}</td> -->
+                                    <!-- <td>{{item.city}}</td> -->
+                                    <td>{{item.degree}},{{item.higherdip}},{{item.dip}},{{item.al}}</td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-success mr-2">U</button>
+                                        <button type="button" class="btn btn-dabger mr-2">D</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
