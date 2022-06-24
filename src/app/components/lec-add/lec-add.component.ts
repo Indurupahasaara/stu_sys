@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LecServiceService } from '../services/lec-service.service';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-lec-add',
@@ -12,10 +14,21 @@ export class LecAddComponent implements OnInit {
   submitted: boolean = false;
   lecList: any[] = [];
   lec_regForm!: FormGroup;
-  isUpdate:boolean=false;
+  isUpdate: boolean = false;
 
   get f() {
     return this.lec_regForm.controls;
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private lecservice: LecServiceService
+  ){
+
+  }
+  ngOnInit(): void {
+    this.loading$=this.asObservable();
+    this.initForm();
   }
 
   initForm(): void {
@@ -23,7 +36,7 @@ export class LecAddComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      contactNo: ['', [Validators.required]],
+      contactNo: ['', [Validators.required],Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
       id: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       course: ['', [Validators.required]],
@@ -34,19 +47,23 @@ export class LecAddComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
 
+  Onsubmit(): void {
+    this.studentService.create(this.lec_regForm.value).subscribe(() => {
+      console.log("Record Inserted");
+    })
+    this.submitted = true;
+    if (this.lec_regForm.valid) {
+      console.log(this.lec_regForm.value);
+    }
+    console.log("akaalffm");
+    
   }
+
   clearForm(): void {
     this.submitted = false;
     this.lec_regForm.clearValidators;
     this.lec_regForm.reset;
   }
 
-  Onsubmit(): void {
-    this.submitted = true;
-    if (this.lec_regForm.valid) {
-      console.log(this.lec_regForm.value);
-    }
-  }
 }

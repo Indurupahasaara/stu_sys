@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form [formGroup]="stu_regForm"  >
+    <form [formGroup]="stu_regForm" (ngSubmit)="Onsubmit()">
         <div class="row">
             <div class="col-md-12">
                 <h1> <b> Student Registration </b></h1>
@@ -15,15 +15,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Student First Name</label>
-                                    <input type="text" class="form-control" formControlName="fname"
-                                        placeholder="First Name" required>
+                                    <input type="text" class="form-control is-invalid" formControlName="fname"
+                                        placeholder="First Name"
+                                        [ngClass]="{ 'is-invalid': submitted && f['fname'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['fname'].errors">
+                                        <div *ngIf="f.fname.errors.required">Please Enter First Name</div>
+                                        <div *ngIf="f.fname.errors.pattern">Firstname is invalid</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Student Last Name</label>
-                                    <input type="text" class="form-control" formControlName="lname"
-                                        placeholder="Last Name" required>
+                                    <input type="text" class="form-control is-invalid" formControlName="lname"
+                                        placeholder="Last Name"
+                                        [ngClass]="{'is-invalid': submitted && f['lname'].errors }">
+                                    <div class="invalid-feedback" *ngIf="submitted && f['fname'].errors">
+                                        <div *ngIf="f.fname.errors.required">Please Enter last Name</div>
+                                        <div *ngIf="f.fname.errors.pattern">Lastname is invalid</div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -32,8 +44,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" formControlnName="email"
-                                        placeholder="Email" required>
+                                    <input type="email" class="form-control is-invalid" formControlnName="email"
+                                        placeholder="Email"
+                                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+
+                                        <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+                                            <div *ngIf="f.email.errors.required">Please Enter last Name</div>
+                                            <div *ngIf="f.email.errors.pattern">Lastname is invalid</div>
+                                        </div>
+
                                 </div>
                             </div>
                         </div>
@@ -43,16 +62,29 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone No</label>
-                                    <input type="number" class="form-control" formControlnName="telephoneNo"
-                                        placeholder="Number" required>
+                                    <input type="number" class="form-control is-invalid" formControlnName="telephoneNo"
+                                        placeholder="Number"
+                                        [ngClass]="{'is-invalid': submitted && f['telephoneNo'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['telephoneNo'].errors">
+                                        <div *ngIf="f.telephoneNo.errors.required">Please Enter T.P NO</div>
+                                        <div *ngIf="f.telephoneNo.errors.pattern">T.P is invalid</div>
+                                    </div>
+
                                 </div>
                             </div>
                             <!-- Id number -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Id Number</label>
-                                    <input type="text" class="form-control" formControlnName="id"
-                                        placeholder=" Id Number" required>
+                                    <input type="text" class="form-control is-invalid" formControlnName="id"
+                                        placeholder=" Id Number"
+                                        [ngClass]="{ 'is-invalid': submitted && f['id'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
+                                        <div *ngIf="f.id.errors.required">Please Enter T.P NO</div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -65,15 +97,15 @@
                                         <div class="col-3">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="gender" id="male"
-                                                    value="male" formControlName="gender" checked="checked">Male
+                                                    value="male" formControlName="gender" checked="">Male
                                             </div>
                                         </div>
 
 
                                         <div class="col-3">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="gender" id="male"
-                                                    value="male" formControlName="gender">Female
+                                                <input class="form-check-input" type="radio" name="gender" id="female"
+                                                    value="female" formControlName="gender">Female
                                             </div>
                                         </div>
 
@@ -84,16 +116,22 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Course</label>
-                                    <select class="form-contol" required formControlName="course">
+                                    <select class="form-contol is-invalid" formControlName="course"
+                                        [ngClass]="{ 'is-invalid': submitted && f['course'].errors }">
                                         <option value="">Select Course</option>
-                                        <option value=""> ICT</option>
-                                        <option value=""> HR</option>
-                                        <option value=""> CIVIL ENGINEARING</option>
-                                        <option value=""> ENGLISH</option>
-                                        <option value="">GRAPHIC DESIGN</option>
-                                        <option value="">CISCO NETWORKING</option>
-                                        <option value="">ENGINEARING</option>
+                                        <option value="ict"> ICT</option>
+                                        <option value="hr"> HR</option>
+                                        <option value="civil eng"> CIVIL ENGINEARING</option>
+                                        <option value="english"> ENGLISH</option>
+                                        <option value="GRAPHIC">GRAPHIC DESIGN</option>
+                                        <option value="CISCO">CISCO NETWORKING</option>
+                                        <option value="ENGINEARING">ENGINEARING</option>
                                     </select>
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
+                                        <div *ngIf="f.id.errors.required">Please Enter Course</div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,42 +141,68 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" formControlnName="Address" placeholder="No"
-                                        required>
+                                    <input type="text" class="form-control is-invalid" formControlnName="Address"
+                                        placeholder="No" [ngClass]="{ 'is-invalid': submitted && f['Address'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['Address'].errors">
+                                        <div *ngIf="f.Address.errors.required">Please Enter NO</div>
+
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>lane</label>
-                                    <input type="text" class="form-control" formControlnName="Address" placeholder="Lane"
-                                        required>
+                                    <input type="text" class="form-control is-invalid" formControlnName="Address"
+                                        placeholder="Lane"
+                                        [ngClass]="{ 'is-invalid': submitted && f['Address'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['Address'].errors">
+                                        <div *ngIf="f.Address.errors.required">Please Enter Lane</div>
+
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>town</label>
-                                    <input type="text" class="form-control" formControlnName="Address" placeholder="town">
+                                    <input type="text" class="form-control is-invalid" formControlnName="Address"
+                                        placeholder="town"
+                                        [ngClass]="{ 'is-invalid': submitted && f['Address'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['Address'].errors">
+                                        <div *ngIf="f.Address.errors.required">Please Enter
+                                            Town
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>City</label>
-                                    <input type="text" class="form-control" placeholder="Address">
+                                    <input type="text" class="form-control is-invalid" placeholder="Address"
+                                        [ngClass]="{ 'is-invalid': submitted && f['Address'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['Address'].errors">
+                                        <div *ngIf="f.Address.errors.required">Please Enter City</div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="container my-4 shadow p-4">
-                        <button type="submit" class="btn btn-success" (click)="Onsubmit"> <i
-                                class="fas fa-spinner fa-spin"> </i> Sign In</button>
+                        <button type="submit" class="btn btn-success"> <i class="fas fa-spinner fa-spin"> </i> Sign
+                            In</button>
                     </div>
 
                     <div class="container my-4 shadow p-4">
-                        <button type="submit" class="btn btn-danger" (click)="clearForm()"><i
+                        <button type="reset" class="btn btn-danger" (click)="clearForm()"><i
                                 class="fa-solid fa-eraser"></i> Clear</button>
 
                     </div>
@@ -155,7 +219,7 @@
 
         <div class="col-md-12">
 
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-body">
                     <div class="row">
                         <table class="table table-hover">
@@ -188,8 +252,8 @@
                                     <th>{{item.town}}</th>
                                     <th>{{item.city}}</th>
                                     <td>
-                                        <button type="button" class="btn btn-success mr-2">U</button>
-                                        <button type="button" class="btn btn-dabger mr-2">D</button>
+                                        <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
+                                        <button type="button" class="btn btn-dabger mr-2" (click)="onDelete(item.id)">D</button>
                                     </td>
                                 </tr>
                             </tbody>

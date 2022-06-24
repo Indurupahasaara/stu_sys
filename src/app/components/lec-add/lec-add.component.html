@@ -1,5 +1,5 @@
 <div class="container">
-    <form >
+    <form [formGroup]="lec_regForm" (ngSubmit)="Onsubmit()" >
       
         <div class="row">
 
@@ -18,14 +18,21 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Name</label>
-                                    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" required>
+                                    <input type="text" class="form-control is-invalid" formControlName="firstName" placeholder="First Name" 
+                                    [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['firstName'].errors">
+                                        <div *ngIf="f.firstName.errors.required">Please Enter First Name</div>
+                                        <div *ngIf="f.firstName.errors.pattern">Firstname is invalid</div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Id</label>
-                                    <input type="text" class="form-control"  formControlName="lastName"placeholder="Lecturer Id" required>
+                                    <input type="text" class="form-control is-invalid"  formControlName="lastName"placeholder="Lecturer Id"
+                                    [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" >
                                 </div>
                             </div>
                         </div>
@@ -35,7 +42,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" formControlName=" email" placeholder="Email" required>
+                                    <input type="email" class="form-control is-invalid" formControlName=" email" placeholder="Email" [ngClass]="{'is-invalid':submitted &&f['email'].errors,'is-valid':submitted && f.email.valid}">
+                                    <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+                                        <div *ngIf="f['email'].errors['email']">
+                                            Please Enter Address
+                                        </div>
+                                        <div *ngIf="f.email.errors.minlength">
+                                            min  character length is 8 characters
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -45,14 +60,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone No</label>
-                                    <input type="number" class="form-control" formControlName="contactNo" placeholder="Number" required>
+                                    <input type="number" class="form-control is-invalid" formControlName="contactNo" placeholder="Number"
+                                    [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['contactNo'].errors">
+                                        <div *ngIf="f.contactNo.errors.required">Please Enter Last Name</div>
+                                        <div *ngIf="f.contactNo.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Id number -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Id Number</label>
-                                    <input type="text" class="form-control" formControlName="id" placeholder=" Id Number" required>
+                                    <input type="text" class="form-control is-invalid" formControlName="id" placeholder=" Id Number" 
+                                    [ngClass]="{ 'is-invalid': submitted && f['id'].errors }">
+
+                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
+                                        <div *ngIf="f.id.errors.required">Please Enter Last Name</div>
+                                        <div *ngIf="f.id.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -84,16 +111,22 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Teaching corses</label>
-                                    <select class="form-contol" required formControlName=" course">
-                                        <option value="">Select Course</option>
-                                        <option value=""> ICT</option>
-                                        <option value=""> HR</option>
-                                        <option value=""> CIVIL ENGINEARING</option>
-                                        <option value=""> ENGLISH</option>
-                                        <option value="">GRAPHIC DESIGN</option>
-                                        <option value="">CISCO NETWORKING</option>
-                                        <option value="">ENGINEARING</option>
+                                    <select class="form-contol is-invalid" formControlName=" course"  
+                                    [ngClass]="{ 'is-invalid': submitted && f['course'].errors }">
+                                    <option value="">Select Course</option>
+                                    <option value="ict"> ICT</option>
+                                    <option value=" hr"> HR</option>
+                                    <option value=" civil eng"> CIVIL ENGINEARING</option>
+                                    <option value="english"> ENGLISH</option>
+                                    <option value=" GRAPHIC">GRAPHIC DESIGN</option>
+                                    <option value=" CISCO">CISCO NETWORKING</option>
+                                    <option value="ENGINEARING">ENGINEARING</option>>
+                                    <option value="autto cad">AUTO CAD</option>
                                     </select>
+                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
+                                        <div *ngIf="f.id.errors.required">Please Enter Course</div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -176,13 +209,13 @@
 
                     
             <div class="container my-4 shadow p-4">
-                <button type="submit" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser"></i> Clear</button>
+                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser"></i> Clear</button>
                
             </div>
             
             <div class="container my-4 shadow p-4">
                
-                <button type="submit" class="btn btn-success"   (click)="Onsubmit"> <i  class="fas fa-spinner fa-spin"> </i> Sign In</button>
+                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin"> </i> Sign In</button>
             </div>
 
 
@@ -196,7 +229,7 @@
 
             <div class="card mt-3">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row mt-3">
                         <table class="table table-hover mt-3">
                             <thead>
                                 <tr>

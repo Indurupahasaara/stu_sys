@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,29 +11,38 @@ import { environment } from 'src/environments/environment';
 })
 export class StudentService {
   [x: string]: any;
-  // baseAPIUrl: string = 'https://student-managment-system-a0e66-default-rtdb.firebaseio.com/'
+  baseAPIUrl: string = 'https://student-managment-system-a0e66-default-rtdb.firebaseio.com/'
 
   constructor(
+    private http: HttpClient
   ) { }
 
 
 
   create(student :any):Observable<any>{
-    return this['http'].post(`${environment.firebase}/student.json`,student);
+    return this['http'].post(`${this.baseAPIUrl}/student.json`,student);
   }
 
 
-  getAll() {
-
+  getAll():Observable<any> {
+    return this.http.get(`${this.baseAPIUrl}/lec.json`).pipe(map((res)=>{
+      const customers:any[]=[];
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          // lec .push({...res[key],id: key});
+        }
+      }
+      // return lec;
+    }));
   }
 
    
   delete(id: string): Observable<any> {
-    return this['http'].delete(`${environment.firebase}/student/${id}.json`);
+    return this['http'].delete(`${this.baseAPIUrl}/student/${id}.json`);
   }
 
   update(customer: any, id: string): Observable<any> {
-    return this['http'].put(`${environment.firebase}/student/${id}.json`,student);
+    return this['http'].put(`${this.baseAPIUrl}/student/${id}.json`,student);
   }
 
 
