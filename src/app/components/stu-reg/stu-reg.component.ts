@@ -27,40 +27,41 @@ export class StuRegComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService
-    ){}
+  ) { }
 
   ngOnInit(): void {
-    this.loading$=this.loading.asObservable();
+    this.loading$ = this.loading.asObservable();
     this.initForm();
     this.getList();
 
   }
-  getList() :void {
-    this.studentService.getAll().subscribe(res=>{
-      this.studentList=res;
+  getList(): void {
+    this.studentService.getAll().subscribe(res => {
+      this.studentList = res;
     })
   }
-
+  // validations
   initForm(): void {
     this.stu_regForm = this.fb.group({
-      fname:['',[Validators.required],Validators.pattern('^[A-Za-z_-]{2,20}$')],
-      lname:['',[Validators.required],Validators.pattern('^[A-Za-z_-]{2,20}$')],
-      email:['',[Validators.required,Validators.email]],
-      telephoneNo:['',[Validators.required],Validators.maxLength(10),Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
-      id:['',[Validators.required]],
-      gender:['',[Validators.required]],
-      course:['',[Validators.required]],
-      Address:['',[Validators.required]],
+      fname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
+      lname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
+      email: ['', [Validators.required, Validators.email]],
+      telephoneNo: ['', [Validators.required], Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
+      id: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      course: ['', [Validators.required]],
+      Address: ['', [Validators.required]],
     })
   }
+  // To cleare Form
   clearForm(): void {
     this.submitted = false;
     this.stu_regForm.clearValidators;
 
   }
-
+  // To Submit
   Onsubmit(): void {
-    this.studentService.create(this.stu_regForm.value).subscribe(res=>{
+    this.studentService.create(this.stu_regForm.value).subscribe(res => {
       console.log("Record Inserted");
     })
     this.submitted = true;
@@ -70,21 +71,25 @@ export class StuRegComponent implements OnInit {
     }
     console.log("ABC")
   }
-
+  // To delete
   onDelete(id: string): void {
     let isConfirm: boolean = confirm('Are You want to delete this record')
     if (isConfirm) {
-     this.studentService.delete(id).subscribe(res =>{
-       console.log(res);
-       this.getList();
-       
-     });
+      this.studentService.delete(id).subscribe(res => {
+        console.log(res);
+        this.getList();
+
+      });
     }
   }
 
-  onUpdate(customer: any): void {
- 
+  onUpdate(student: any): void {
+     this.isUpdate =true;
+    //  this.selectedId= student.id;
 
+    this.stu_regForm.patchValue({
+     
+    })
   }
 
 }

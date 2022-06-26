@@ -49,13 +49,13 @@ export class StudentService {
     // set('content-type','application/jason')
     // .set('Access-Control-Allow origin','*')
     return this.http.get(`${this.baseAPIUrl}/student.json`).pipe(map((res)=>{
-      const customers:any[]=[];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-          customers.push({...res[key],id: key});
-        }
-      }
-      return customers;
+      // const customers:any[]=[];
+      // for(const key in res){
+      //   if(res.hasOwnProperty(key)){
+      //     customers.push({...res[key],id: key});
+      //   }
+      // }
+      // return customers;
     }));
 
   }
