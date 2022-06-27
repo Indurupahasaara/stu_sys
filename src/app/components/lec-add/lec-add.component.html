@@ -209,13 +209,15 @@
 
                     
             <div class="container my-4 shadow p-4">
-                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser"></i> Clear</button>
+                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser">
+                </i> Clear</button>
                
             </div>
             
             <div class="container my-4 shadow p-4">
                
-                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin"> </i> Sign In</button>
+                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin">
+                 </i> Sign In</button>
             </div>
 
 
@@ -263,8 +265,8 @@
                                     <td>{{item.degree}},{{item.higherdip}},{{item.dip}},{{item.al}}</td>
 
                                     <td>
-                                        <button type="button" class="btn btn-success mr-2">U</button>
-                                        <button type="button" class="btn btn-dabger mr-2">D</button>
+                                        <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
+                                        <button type="button" class="btn btn-dabger mr-2" (click)="onDelete (item.id)">D</button>
                                     </td>
                                 </tr>
                             </tbody>

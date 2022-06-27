@@ -53,12 +53,7 @@ export class StuRegComponent implements OnInit {
       Address: ['', [Validators.required]],
     })
   }
-  // To cleare Form
-  clearForm(): void {
-    this.submitted = false;
-    this.stu_regForm.clearValidators;
-
-  }
+ 
   // To Submit
   Onsubmit(): void {
     this.studentService.create(this.stu_regForm.value).subscribe(res => {
@@ -90,6 +85,13 @@ export class StuRegComponent implements OnInit {
     this.stu_regForm.patchValue({
      
     })
+  }
+
+   // To cleare Form
+   clearForm(): void {
+    this.submitted = false;
+    this.stu_regForm.clearValidators;
+
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LecServiceService } from '../services/lec-service.service';
-import { StudentService } from '../services/student.service';
+
 
 @Component({
   selector: 'app-lec-add',
@@ -9,16 +9,21 @@ import { StudentService } from '../services/student.service';
   styleUrls: ['./lec-add.component.css']
 })
 export class LecAddComponent implements OnInit {
-  [x: string]: any;
+  
 
   submitted: boolean = false;
   lecList: any[] = [];
   lec_regForm!: FormGroup;
   isUpdate: boolean = false;
+  lectureList:any[]=[];
+  loading$: any;
+  customerService: any;
+  customerList: any;
+  selectedId: any;
 
-  // get f() {
-  //   return this.lec_regForm.controls;
-  // }
+  get f() {
+    return this.lec_regForm.controls;
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +34,20 @@ export class LecAddComponent implements OnInit {
   ngOnInit(): void {
     this.loading$=this.asObservable();
     this.initForm();
+    this.getList();
   }
+  asObservable(): any {
+    throw new Error('Method not implemented.');
+  }
+
+  // Get all details -- error occured
+
+   getList(): void {
+    this.lecservice.getAll().subscribe((res: any) => {
+      this.lecList = res;
+    });
+  }
+
 
   initForm(): void {
     this.lec_regForm = this['fb'].group({
@@ -45,33 +63,31 @@ export class LecAddComponent implements OnInit {
     });
   }
 
-  // getList(): void {
-  //   this.customerService.getAll().subscribe(res => {
-  //     this.customerList = res;
-  //   });
-  // }
+ 
 
-
-
+// To Submit
 
   Onsubmit(): void {
-    // this.studentService.create(this.lec_regForm.value).subscribe(() => {
-    //   console.log("Record Inserted");
-    // })
-    // this.submitted = true;
-    // if (this.lec_regForm.valid) {
-    //   console.log(this.lec_regForm.value);
-    // }
-    // console.log("akaalffm");
+    this.lecservice.create(this.lec_regForm.value).subscribe(() => {
+      console.log("Record Inserted");
+    })
+    this.submitted = true;
+    if (this.lec_regForm.valid) {
+      console.log(this.lec_regForm.value);
+    }
+    console.log("akaalffm");
     
   }
+// to update
+  onUpdate(lec:any):void{
+    this.isUpdate =true;
+    this.selectedId= lec.id;
 
-  clearForm(): void {
-    this.submitted = false;
-    this.lec_regForm.clearValidators;
-    this.lec_regForm.reset;
+    this.lec_regForm.patchValue({
+     
+    })
   }
-
+// to delete
   onDelete(id: string): void {
     let isConfirm: boolean = confirm('Are You want to delete this record')
     if (isConfirm) {
@@ -82,13 +98,10 @@ export class LecAddComponent implements OnInit {
      });
     }
   }
-  onUpdate(lec:any):void{
-    this.isUpdate =true;
-    this.selectedId= lec.id;
-
-    this.lec_regForm.patchValue({
-     
-    })
+  // to cleare
+  clearForm(): void {
+    this.submitted = false;
+    this.lec_regForm.clearValidators;
+    this.lec_regForm.reset;
   }
-
 }

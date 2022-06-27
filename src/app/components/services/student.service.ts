@@ -63,10 +63,4 @@ export class StudentService {
 
   
 }
-// function customer(arg0: string, customer: any): Observable<any> {
-//   throw new Error('Function not implemented.');
-// }
 
-// function student(arg0: string, student: any): Observable<any> {
-//   throw new Error('Function not implemented.');
-// }
