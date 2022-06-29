@@ -37,7 +37,7 @@ export class LecAddComponent implements OnInit {
     this.getList();
   }
   asObservable(): any {
-    throw new Error('Method not implemented.');
+   
   }
 
   // Get all details -- error occured
@@ -50,14 +50,13 @@ export class LecAddComponent implements OnInit {
 
 
   initForm(): void {
-    this.lec_regForm = this['fb'].group({
+    this.lec_regForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      contactNo: ['', [Validators.required],Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
+      email: ['', [Validators.required ,Validators.email]],
+      contactNo: ['', [Validators.required,Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       id: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      course: ['', [Validators.required]],
       address: ['', [Validators.required]],
       education: ['', [Validators.required]]
     });
@@ -70,13 +69,16 @@ export class LecAddComponent implements OnInit {
   Onsubmit(): void {
     this.lecservice.create(this.lec_regForm.value).subscribe(() => {
       console.log("Record Inserted");
+      alert:('Record Add Sucessfully' );
     })
     this.submitted = true;
     if (this.lec_regForm.valid) {
       console.log(this.lec_regForm.value);
+      alert("Record Add Succesfully");
+      this.submitted = false;
     }
     console.log("akaalffm");
-    
+    alert("Record Add Succesfully");
   }
 // to update
   onUpdate(lec:any):void{

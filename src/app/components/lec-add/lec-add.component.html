@@ -18,12 +18,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Name</label>
-                                    <input type="text" class="form-control is-invalid" formControlName="firstName" placeholder="First Name" 
-                                    [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+                                    <input type="text" class="form-control " formControlName="firstName" placeholder="First Name" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
 
-                                    <div class="invalid-feedback" *ngIf="submitted && f['firstName'].errors">
+                                    <div class="invalid-feedback" *ngIf="submitted && f.firstName.errors">
                                         <div *ngIf="f.firstName.errors.required">Please Enter First Name</div>
-                                        <div *ngIf="f.firstName.errors.pattern">Firstname is invalid</div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -31,8 +31,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Id</label>
-                                    <input type="text" class="form-control is-invalid"  formControlName="lastName"placeholder="Lecturer Id"
-                                    [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" >
+                                    <input type="text" class="form-control"  formControlName="lastName"placeholder="Lecturer Id"
+                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
                                 </div>
                             </div>
                         </div>
@@ -42,13 +42,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control is-invalid" formControlName=" email" placeholder="Email" [ngClass]="{'is-invalid':submitted &&f['email'].errors,'is-valid':submitted && f.email.valid}">
-                                    <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
-                                        <div *ngIf="f['email'].errors['email']">
-                                            Please Enter Address
+                                    <input type="text" class="form-control is-invalid" formControlName="email" 
+                                    placeholder="Email" 
+                                    [ngClass]="{'is-invalid':submitted && f.email.errors,'is-valid':submitted &&  f.email.valid}">
+                                    <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
+                                        <div *ngIf="f.email.errors.email">
+                                            Please Enter Valid Email
                                         </div>
-                                        <div *ngIf="f.email.errors.minlength">
-                                            min  character length is 8 characters
+                                        <div *ngIf="f.email.errors.required">
+                                           Please Enter Email
                                         </div>
                                     </div>
                                 </div>
@@ -57,34 +59,34 @@
                         <!-- Telephone -->
 
                         <div class="row">
-                            <div class="col-md-6">
+                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone No</label>
-                                    <input type="number" class="form-control is-invalid" formControlName="contactNo" placeholder="Number"
-                                    [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }">
+                                    <input type="text" class="form-control " formControlName="contactNo" placeholder="Number"
+                                    [ngClass]="{ 'is-invalid': submitted && f.contactNo.errors }">
 
-                                    <div class="invalid-feedback" *ngIf="submitted && f['contactNo'].errors">
+                                    <div class="invalid-feedback" *ngIf="submitted && f.contactNo.errors">
                                         <div *ngIf="f.contactNo.errors.required">Please Enter Last Name</div>
                                         <div *ngIf="f.contactNo.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <!-- Id number -->
-                            <div class="col-md-6">
+                          <div class="col-md-6"> 
                                 <div class="form-group">
                                     <label>Id Number</label>
-                                    <input type="text" class="form-control is-invalid" formControlName="id" placeholder=" Id Number" 
-                                    [ngClass]="{ 'is-invalid': submitted && f['id'].errors }">
+                                    <input type="text" class="form-control " formControlName="id" placeholder=" Id Number" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.id.errors }">
 
-                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
-                                        <div *ngIf="f.id.errors.required">Please Enter Last Name</div>
-                                        <div *ngIf="f.id.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                                    <div class="invalid-feedback" *ngIf="submitted && f.id.errors">
+                                        <div *ngIf="f.id.errors.required">Please Enter Id</div>
+                                        
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> 
+                       </div> 
                         <!-- Gender -->
-                        <div class="row">
+                        <div class="row"> 
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
@@ -112,7 +114,7 @@
                                 <div class="form-group">
                                     <label>Teaching corses</label>
                                     <select class="form-contol is-invalid" formControlName=" course"  
-                                    [ngClass]="{ 'is-invalid': submitted && f['course'].errors }">
+                                    [ngClass]="{ 'is-invalid': submitted && f.course.errors }">
                                     <option value="">Select Course</option>
                                     <option value="ict"> ICT</option>
                                     <option value=" hr"> HR</option>
@@ -129,10 +131,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Adress -->
-                        <div class="row">
+                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Address</label>
@@ -202,22 +204,24 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                      
                    </div>
 
 
                     
             <div class="container my-4 shadow p-4">
-                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser">
-                </i> Clear</button>
+
+                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin">
+                </i> ADD</button>
+                
                
             </div>
             
             <div class="container my-4 shadow p-4">
+                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser">
+                </i> Clear</button>
                
-                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin">
-                 </i> Sign In</button>
             </div>
 
 

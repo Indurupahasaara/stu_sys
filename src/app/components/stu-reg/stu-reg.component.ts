@@ -46,14 +46,14 @@ export class StuRegComponent implements OnInit {
       fname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
       lname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
       email: ['', [Validators.required, Validators.email]],
-      telephoneNo: ['', [Validators.required], Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
+      contactNo: ['', [Validators.required], Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
       id: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       course: ['', [Validators.required]],
       Address: ['', [Validators.required]],
     })
   }
- 
+
   // To Submit
   Onsubmit(): void {
     this.studentService.create(this.stu_regForm.value).subscribe(res => {
@@ -63,8 +63,10 @@ export class StuRegComponent implements OnInit {
     if (this.stu_regForm.valid) {
       console.log(this.stu_regForm.value);
       this.stu_regForm.clearValidators;
+      this.submitted = false;
     }
     console.log("ABC")
+    alert("Data Add succesfully");
   }
   // To delete
   onDelete(id: string): void {
@@ -79,16 +81,16 @@ export class StuRegComponent implements OnInit {
   }
 
   onUpdate(student: any): void {
-     this.isUpdate =true;
+    this.isUpdate = true;
     //  this.selectedId= student.id;
 
     this.stu_regForm.patchValue({
-     
+
     })
   }
 
-   // To cleare Form
-   clearForm(): void {
+  // To cleare Form
+  clearForm(): void {
     this.submitted = false;
     this.stu_regForm.clearValidators;
 

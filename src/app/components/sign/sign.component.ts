@@ -34,7 +34,5 @@ export class SignComponent implements OnInit {
   
 
 }
-function elseif(arg0: boolean) {
-  throw new Error('Function not implemented.');
-}
+
 
