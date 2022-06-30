@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +12,7 @@ export class SignComponent implements OnInit {
   password!: string;
   constructor(
   
-    public formbuilder: FormBuilder,
+   
      private router:Router) { 
   
      }
@@ -22,17 +21,17 @@ export class SignComponent implements OnInit {
   }
 
   login(){
-    if (this.username =='induru'&& this.password =='12345'){
-
+    console.log(this.username)
+    if (this.username =='induru'&& this.password =='12345') {
+      alert("login Sucessfully !");
+      localStorage.setItem('userId', '1');
+      localStorage.setItem('userName', this.username);
       this.router.navigate(['/lec'])
       this.router.navigate(['/registration'])
-    }{
+    }else{
       alert('User name or password incorrect');
     }
-  }
-
-  
-
+  } 
 }
 
 

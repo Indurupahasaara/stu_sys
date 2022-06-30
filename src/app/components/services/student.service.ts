@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -44,23 +44,18 @@ export class StudentService {
     return this.http.put(`${this.baseAPIUrl}/student/${id}.json`,student);
   }
 
-  getAll():Observable<any>{
-    // let headers:HttpHandler =new HttpHandler().
-    // set('content-type','application/jason')
-    // .set('Access-Control-Allow origin','*')
-    return this.http.get(`${this.baseAPIUrl}/student.json`).pipe(map((res)=>{
-      // const customers:any[]=[];
-      // for(const key in res){
-      //   if(res.hasOwnProperty(key)){
-      //     customers.push({...res[key],id: key});
-      //   }
-      // }
-      // return customers;
-    }));
-
+  getAll(): Observable<any>{
+    // //return this.http.get(`${this.baseAPIUrl}/customer.json`).pipe(map((res) => {
+    return this.http.get(`${this.baseAPIUrl}/student.json`).pipe(map((res) => {
+    //   const students:any[] = [];
+    //   for(const key in res){
+    //     if(res.hasOwnProperty(key)){
+    //       students.push({...res[key], id: key});
+    //     }
+    //   }
+    //   return students;
+     }));
   }
 
-
-  
 }
 

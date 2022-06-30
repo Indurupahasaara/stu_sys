@@ -9,13 +9,13 @@ import { LecServiceService } from '../services/lec-service.service';
   styleUrls: ['./lec-add.component.css']
 })
 export class LecAddComponent implements OnInit {
-  
+
 
   submitted: boolean = false;
   lecList: any[] = [];
   lec_regForm!: FormGroup;
   isUpdate: boolean = false;
-  lectureList:any[]=[];
+  lectureList: any[] = [];
   loading$: any;
   customerService: any;
   customerList: any;
@@ -28,21 +28,21 @@ export class LecAddComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lecservice: LecServiceService
-  ){
+  ) {
 
   }
   ngOnInit(): void {
-    this.loading$=this.asObservable();
+    this.loading$ = this.asObservable();
     this.initForm();
     this.getList();
   }
   asObservable(): any {
-   
+
   }
 
   // Get all details -- error occured
 
-   getList(): void {
+  getList(): void {
     this.lecservice.getAll().subscribe((res: any) => {
       this.lecList = res;
     });
@@ -52,52 +52,54 @@ export class LecAddComponent implements OnInit {
   initForm(): void {
     this.lec_regForm = this.fb.group({
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required ,Validators.email]],
-      contactNo: ['', [Validators.required,Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
+      lecId: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      contactNo: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       id: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       address: ['', [Validators.required]],
+      course: ['', [Validators.required]],
       education: ['', [Validators.required]]
     });
   }
-
- 
-
-// To Submit
+  // To Submit
 
   Onsubmit(): void {
-    this.lecservice.create(this.lec_regForm.value).subscribe(() => {
-      console.log("Record Inserted");
-      alert:('Record Add Sucessfully' );
-    })
+
     this.submitted = true;
+    console.log(this.lec_regForm.valid);
     if (this.lec_regForm.valid) {
+
+      this.lecservice.create(this.lec_regForm.value).subscribe(res => {
+        console.log("Record Inserted");
+      })
       console.log(this.lec_regForm.value);
-      alert("Record Add Succesfully");
-      this.submitted = false;
+      alert("Data Add succesfully");
+
+      this.lec_regForm.reset();
     }
-    console.log("akaalffm");
-    alert("Record Add Succesfully");
+
+
+    console.log("alert"); 
   }
-// to update
-  onUpdate(lec:any):void{
-    this.isUpdate =true;
-    this.selectedId= lec.id;
+  // to update
+  onUpdate(lec: any): void {
+    this.isUpdate = true;
+    this.selectedId = lec.id;
 
     this.lec_regForm.patchValue({
-     
+
     })
   }
-// to delete
+  // to delete
   onDelete(id: string): void {
     let isConfirm: boolean = confirm('Are You want to delete this record')
     if (isConfirm) {
-     this.lecservice.delete(id).subscribe(res =>{
-       console.log(res);
-       this.getList();
-       
-     });
+      this.lecservice.delete(id).subscribe(res => {
+        console.log(res);
+        this.getList();
+
+      });
     }
   }
   // to cleare

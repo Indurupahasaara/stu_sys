@@ -1,6 +1,6 @@
 <div class="container">
-    <form [formGroup]="lec_regForm" (ngSubmit)="Onsubmit()" >
-      
+    <form [formGroup]="lec_regForm" (ngSubmit)="Onsubmit()">
+
         <div class="row">
 
             <div class="col-md-12">
@@ -9,7 +9,7 @@
                         <div class="row mt-1000">
 
                             <div class="col-md-12 mt-1000">
-                                
+
                                 <h1> <b>Add Lecthures</b></h1>
                             </div>
                         </div>
@@ -18,12 +18,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Name</label>
-                                    <input type="text" class="form-control " formControlName="firstName" placeholder="First Name" 
-                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                    <input type="text" class="form-control " formControlName="firstName"
+                                        placeholder="First Name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
 
                                     <div class="invalid-feedback" *ngIf="submitted && f.firstName.errors">
-                                        <div *ngIf="f.firstName.errors.required">Please Enter First Name</div>
-                                      
+                                        <div *ngIf="f.firstName.errors.required">Please Enter  Name</div>
+
                                     </div>
                                 </div>
                             </div>
@@ -31,26 +32,32 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lecturer Id</label>
-                                    <input type="text" class="form-control"  formControlName="lastName"placeholder="Lecturer Id"
-                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
-                                </div>
+                                    <input type="text" class="form-control" formControlName="lecId"
+                                        placeholder="Lecturer Id"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lecId.errors }">
+                                
+                                        <div class="invalid-feedback" *ngIf="submitted && f.lecId.errors">
+                                            <div *ngIf="f.lecId.errors.required">Please Enter First Name</div>
+    
+                                        </div>
+                                    </div>
                             </div>
                         </div>
-                        
+
                         <!-- Email -->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control is-invalid" formControlName="email" 
-                                    placeholder="Email" 
-                                    [ngClass]="{'is-invalid':submitted && f.email.errors,'is-valid':submitted &&  f.email.valid}">
+                                    <input type="text" class="form-control is-invalid" formControlName="email"
+                                        placeholder="Email"
+                                        [ngClass]="{'is-invalid':submitted && f.email.errors,'is-valid':submitted &&  f.email.valid}">
                                     <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
                                         <div *ngIf="f.email.errors.email">
                                             Please Enter Valid Email
                                         </div>
                                         <div *ngIf="f.email.errors.required">
-                                           Please Enter Email
+                                            Please Enter Email
                                         </div>
                                     </div>
                                 </div>
@@ -59,34 +66,36 @@
                         <!-- Telephone -->
 
                         <div class="row">
-                             <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telephone No</label>
-                                    <input type="text" class="form-control " formControlName="contactNo" placeholder="Number"
-                                    [ngClass]="{ 'is-invalid': submitted && f.contactNo.errors }">
+                                    <input type="text" class="form-control " formControlName="contactNo"
+                                        placeholder="Number"
+                                        [ngClass]="{ 'is-invalid': submitted && f.contactNo.errors }">
 
                                     <div class="invalid-feedback" *ngIf="submitted && f.contactNo.errors">
                                         <div *ngIf="f.contactNo.errors.required">Please Enter Last Name</div>
-                                        <div *ngIf="f.contactNo.errors.pattern">Lastname should contain minimum 2 characters & should'nt contain symbols and numbers</div>
+                                        <div *ngIf="f.contactNo.errors.pattern">Lastname should contain minimum 2
+                                            characters & should'nt contain symbols and numbers</div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <!-- Id number -->
-                          <div class="col-md-6"> 
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Id Number</label>
-                                    <input type="text" class="form-control " formControlName="id" placeholder=" Id Number" 
-                                    [ngClass]="{ 'is-invalid': submitted && f.id.errors }">
+                                    <input type="text" class="form-control " formControlName="id"
+                                        placeholder=" Id Number" [ngClass]="{ 'is-invalid': submitted && f.id.errors }">
 
                                     <div class="invalid-feedback" *ngIf="submitted && f.id.errors">
                                         <div *ngIf="f.id.errors.required">Please Enter Id</div>
-                                        
+
                                     </div>
                                 </div>
-                            </div> 
-                       </div> 
+                            </div>
+                        </div>
                         <!-- Gender -->
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
@@ -113,20 +122,20 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Teaching corses</label>
-                                    <select class="form-contol is-invalid" formControlName=" course"  
-                                    [ngClass]="{ 'is-invalid': submitted && f.course.errors }">
-                                    <option value="">Select Course</option>
-                                    <option value="ict"> ICT</option>
-                                    <option value=" hr"> HR</option>
-                                    <option value=" civil eng"> CIVIL ENGINEARING</option>
-                                    <option value="english"> ENGLISH</option>
-                                    <option value=" GRAPHIC">GRAPHIC DESIGN</option>
-                                    <option value=" CISCO">CISCO NETWORKING</option>
-                                    <option value="ENGINEARING">ENGINEARING</option>>
-                                    <option value="autto cad">AUTO CAD</option>
+                                    <select class="form-contol" formControlName="course"
+                                        [ngClass]="{ 'is-invalid': submitted && f.course.errors }">
+                                        <option value="" selected>Select Course</option>
+                                        <option value="ict"> ICT</option>
+                                        <option value="hr"> HR</option>
+                                        <option value="civil eng"> CIVIL ENGINEARING</option>
+                                        <option value="english"> ENGLISH</option>
+                                        <option value="GRAPHIC">GRAPHIC DESIGN</option>
+                                        <option value="CISCO">CISCO NETWORKING</option>
+                                        <option value="ENGINEARING">ENGINEARING</option>>
+                                        <option value="autto cad">AUTO CAD</option>
                                     </select>
-                                    <div class="invalid-feedback" *ngIf="submitted && f['id'].errors">
-                                        <div *ngIf="f.id.errors.required">Please Enter Course</div>
+                                    <div class="invalid-feedback" *ngIf="submitted && f.course.errors">
+                                        <div *ngIf="f.course.errors.required">Please Enter Course</div>
 
                                     </div>
                                 </div>
@@ -134,32 +143,35 @@
                         </div> -->
 
                         <!-- Adress -->
-                         <div class="row">
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control" formControlName="address" placeholder="No" required>
+                                    <input type="text" class="form-control" formControlName="address" placeholder="No">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>lane</label>
-                                    <input type="text" class="form-control" formControlName="address" placeholder="Lane" required>
+                                    <input type="text" class="form-control" formControlName="address"
+                                        placeholder="Lane">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>town</label>
-                                    <input type="text" class="form-control" formControlnName="address" placeholder="town">
+                                    <input type="text" class="form-control" formControlnName="address"
+                                        placeholder="town">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>City</label>
-                                    <input type="text" class="form-control" formControlName="address" placeholder="city">
+                                    <input type="text" class="form-control" formControlName="address"
+                                        placeholder="city">
                                 </div>
                             </div>
                         </div>
@@ -168,61 +180,65 @@
                             <div class="form-group">
                                 <label for="">Education </label>
                                 <div class="row">
-            
+
                                     <div class="col-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="deg" id="deg" formControlName=" education">
+                                            <input class="form-check-input" type="checkbox" value="deg" id="deg"
+                                                formControlName="education">
                                             <label class="form-check-label" for="dev">
-                                         Degree
-                                        </label>
+                                                Degree
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="HD" id="HD" formControlName=" education">
+                                            <input class="form-check-input" type="checkbox" value="HD" id="HD"
+                                                formControlName="education">
                                             <label class="form-check-label" for="des">
-                                         Higher Diploma
-                                        </label>
+                                                Higher Diploma
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="DIP" id="DIP" formControlName=" education">
+                                            <input class="form-check-input" type="checkbox" value="DIP" id="DIP"
+                                                formControlName="education">
                                             <label class="form-check-label" for="buss">
-                                         Diploma
-                                        </label>
+                                                Diploma
+                                            </label>
                                         </div>
                                     </div>
 
                                     <div class="col-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="AL" id="AL" formControlName=" education">
+                                            <input class="form-check-input" type="checkbox" value="AL" id="AL"
+                                                formControlName="education">
                                             <label class="form-check-label" for="buss">
-                                         A/L
-                                        </label>
+                                                A/L
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
-                     
-                   </div>
+                        </div>
+
+                    </div>
 
 
-                    
-            <div class="container my-4 shadow p-4">
 
-                <button type="submit" class="btn btn-success"> <i  class="fas fa-spinner fa-spin">
-                </i> ADD</button>
-                
-               
-            </div>
-            
-            <div class="container my-4 shadow p-4">
-                <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser">
-                </i> Clear</button>
-               
-            </div>
+                    <div class="container my-4 shadow p-4">
+
+                        <button type="submit" class="btn btn-success"> <i class="fas fa-spinner fa-spin">
+                            </i> ADD</button>
+
+
+                    </div>
+
+                    <div class="container my-4 shadow p-4">
+                        <button type="reset" class="btn btn-danger" (click)="clearForm()"><i class="fa-solid fa-eraser">
+                            </i> Clear</button>
+
+                    </div>
 
 
                 </div>
@@ -269,8 +285,10 @@
                                     <td>{{item.degree}},{{item.higherdip}},{{item.dip}},{{item.al}}</td>
 
                                     <td>
-                                        <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
-                                        <button type="button" class="btn btn-dabger mr-2" (click)="onDelete (item.id)">D</button>
+                                        <button type="button" class="btn btn-success mr-2"
+                                            (click)="onUpdate(item)">U</button>
+                                        <button type="button" class="btn btn-dabger mr-2"
+                                            (click)="onDelete (item.id)">D</button>
                                     </td>
                                 </tr>
                             </tbody>

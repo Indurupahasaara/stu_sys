@@ -43,30 +43,35 @@ export class StuRegComponent implements OnInit {
   // validations
   initForm(): void {
     this.stu_regForm = this.fb.group({
-      fname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
-      lname: ['', [Validators.required], Validators.pattern('^[A-Za-z_-]{2,20}$')],
+      fname: ['', [Validators.required]],
+      lname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      contactNo: ['', [Validators.required], Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
+      contactNo: ['', [Validators.required]],
       id: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       course: ['', [Validators.required]],
-      Address: ['', [Validators.required]],
+      
     })
   }
 
   // To Submit
   Onsubmit(): void {
-    this.studentService.create(this.stu_regForm.value).subscribe(res => {
-      console.log("Record Inserted");
-    })
+  
     this.submitted = true;
+    console.log(this.stu_regForm.valid);
     if (this.stu_regForm.valid) {
+
+      this.studentService.create(this.stu_regForm.value).subscribe(res => {
+        console.log("Record Inserted");
+      
+      })
       console.log(this.stu_regForm.value);
-      this.stu_regForm.clearValidators;
-      this.submitted = false;
-    }
-    console.log("ABC")
     alert("Data Add succesfully");
+    
+    this.stu_regForm.reset();
+    }
+
+    console.log("alert"); 
   }
   // To delete
   onDelete(id: string): void {
@@ -74,7 +79,7 @@ export class StuRegComponent implements OnInit {
     if (isConfirm) {
       this.studentService.delete(id).subscribe(res => {
         console.log(res);
-        this.getList();
+        // this.getList();
 
       });
     }
