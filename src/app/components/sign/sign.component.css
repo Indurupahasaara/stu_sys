@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  background-color:aquamarine;
 }
 
 body {
@@ -13,16 +14,18 @@ body {
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 40px;
-  background-color: #f5f5f5;
+  background-color: azure;
 }
 
 .form-signin {
-  width: 100%;
+  width: 90%;
   max-width: 330px;
-  padding: 15px;
+  padding: 14px;
   margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 20px;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -50,4 +53,17 @@ body {
 
 .mrg-top-150 {
   margin-top: 150px;
+}
+
+.card{
+  margin-top: 50px;
+  background-image: -moz-repeating-linear-gradient("https://thumbs.dreamstime.com/b/image-view-typical-american-school-building-exterior-123934576.jpg");
+}
+.card-body{
+
+  background-color: aqua;
+  background-image: "https://thumbs.dreamstime.com/b/image-view-typical-american-school-building-exterior-123934576.jpg ";
+}
+.form-signin{
+  background-color: blanchedalmond;
 }

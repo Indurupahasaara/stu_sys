@@ -112,6 +112,6 @@ export class LecAddComponent implements OnInit {
   }
 
   logout():void{
-    this.router.navigate(['/home'])
+    this.router.navigate(['/welcome'])
   }
 }

@@ -28,6 +28,7 @@ export class SignComponent implements OnInit {
       localStorage.setItem('userName', this.username);
       this.router.navigate(['/welcome'])
       // this.router.navigate(['/registration'])
+      sessionStorage.Abondaon;
     }else{
       alert('User name or password incorrect');
     }

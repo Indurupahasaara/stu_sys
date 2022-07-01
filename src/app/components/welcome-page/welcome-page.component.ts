@@ -20,4 +20,8 @@ export class WelcomePageComponent implements OnInit {
   leclog() :void{
     this.router.navigate(['/lec'])
   }
+
+  logout() :void{
+    this.router.navigate(['/sign'])
+  }
 }

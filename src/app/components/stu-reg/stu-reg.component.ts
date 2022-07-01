@@ -103,7 +103,7 @@ export class StuRegComponent implements OnInit {
 
   }
   logout():void{
-    this.router.navigate(['/home'])
+    this.router.navigate(['/welcome'])
   }
 
 }
