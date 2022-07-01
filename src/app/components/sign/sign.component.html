@@ -1,20 +1,45 @@
 <div class="mrg-top-150">
   <div class="text center">
     <form class="form-signin">
-      <img class="mb-4"
-        src="https://images.saymedia-content.com/.image/t_share/MTc0MzA1MjAyMjczMjY1MTQ4/graduation-wishes-and-sayings-what-to-write-in-a-high-school-graduation-card.jpg"
-        alt="" width="72" height="72" />
+      <img
+        class="mb-4"
+        src="https://www.collinsdictionary.com/images/full/school_309241295.jpg"
+        alt=""
+        width="72"
+        height="72"
+      />
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Username</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Username" required autofocus />
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Username"
+        required
+        autofocus
+        [(ngModel)]="username"
+        [ngModelOptions]="{ standalone: true }"
+      />
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+        [(ngModel)]="password"
+        [ngModelOptions]="{ standalone: true }"
+      />
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)=" login()">
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+        (click)="login()"
+      >
         Sign in
       </button>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>

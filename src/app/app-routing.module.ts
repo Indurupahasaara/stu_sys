@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LecAddComponent } from './components/lec-add/lec-add.component';
 import { SignComponent } from './components/sign/sign.component';
 import { StuRegComponent } from './components/stu-reg/stu-reg.component';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'payment',
     component:PaymentDetailsComponent
+  },
+  {
+    path:'welcome',
+    component:WelcomePageComponent
   }
  
 ];

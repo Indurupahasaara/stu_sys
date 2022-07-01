@@ -26,8 +26,8 @@ export class SignComponent implements OnInit {
       alert("login Sucessfully !");
       localStorage.setItem('userId', '1');
       localStorage.setItem('userName', this.username);
-      this.router.navigate(['/lec'])
-      this.router.navigate(['/registration'])
+      this.router.navigate(['/welcome'])
+      // this.router.navigate(['/registration'])
     }else{
       alert('User name or password incorrect');
     }

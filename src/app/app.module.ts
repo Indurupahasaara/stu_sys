@@ -19,6 +19,7 @@ import { AngularFireModule} from '@angular/fire/compat';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 
 
 
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddCourseComponent,
     HomeComponent,
     PaymentDetailsComponent,
+    WelcomePageComponent,
    
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { StudentService } from '../services/student.service';
@@ -26,7 +27,8 @@ export class StuRegComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class StuRegComponent implements OnInit {
 
       this.studentService.create(this.stu_regForm.value).subscribe(res => {
         console.log("Record Inserted");
-      
+
       })
       console.log(this.stu_regForm.value);
     alert("Data Add succesfully");
@@ -99,6 +101,9 @@ export class StuRegComponent implements OnInit {
     this.submitted = false;
     this.stu_regForm.clearValidators;
 
+  }
+  logout():void{
+    this.router.navigate(['/home'])
   }
 
 }

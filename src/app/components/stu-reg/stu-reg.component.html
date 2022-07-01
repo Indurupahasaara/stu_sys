@@ -33,7 +33,7 @@
                                         [ngClass]="{'is-invalid': submitted && f.lname.errors }">
                                     <div class="invalid-feedback" *ngIf="submitted && f.fname.errors">
                                         <div *ngIf="f.fname.errors.required">Please Enter last Name</div>
-                                        <div *ngIf="f.fname.errors.pattern">Lastname is invalid</div>
+                                        
                                     </div>
 
                                 </div>
@@ -195,7 +195,11 @@
                     </div>
 
 
+                    <div class="container my-4 shadow p-4">
+                        <button type="button" class="btn btn-info" (click)="logout()" ><i
+                                class="fa-solid fa-eraser"></i> LogOut</button>
 
+                    </div>
 
                 </div>
             </div>

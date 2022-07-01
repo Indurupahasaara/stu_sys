@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LecServiceService } from '../services/lec-service.service';
 
 
@@ -27,7 +28,8 @@ export class LecAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private lecservice: LecServiceService
+    private lecservice: LecServiceService,
+    private router:Router
   ) {
 
   }
@@ -107,5 +109,9 @@ export class LecAddComponent implements OnInit {
     this.submitted = false;
     this.lec_regForm.clearValidators;
     this.lec_regForm.reset;
+  }
+
+  logout():void{
+    this.router.navigate(['/home'])
   }
 }

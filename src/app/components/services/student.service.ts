@@ -21,21 +21,6 @@ export class StudentService {
   create(student :any):Observable<any>{
     return this.http.post(`${this.baseAPIUrl}/student.json`,student);
   }
-
-
-  // getAll():Observable<any> {
-  //   return this.http.get(`${this.baseAPIUrl}/student.json`).pipe(map((res)=>{
-  //     const students:any[]=[];
-  //     for(const key in res){
-  //       if(res.hasOwnProperty(key)){
-  //          students.push({...res[key],id: key});
-  //       }
-  //     }
-  //      return students;
-  //   }));
-  // }
-
-   
   delete(id: string): Observable<any> {
     return this.http.delete(`${this.baseAPIUrl}/student/${id}.json`);
   }
