@@ -74,11 +74,15 @@ export class LecAddComponent implements OnInit {
 
       this.lecservice.create(this.lec_regForm.value).subscribe(res => {
         console.log("Record Inserted");
+        alert("Data Add succesfully");
       })
       console.log(this.lec_regForm.value);
-      alert("Data Add succesfully");
+      
 
       this.lec_regForm.reset();
+    }else{
+      this.lec_regForm.reset;
+      // this.lec_regForm.clearValidators;
     }
 
 
